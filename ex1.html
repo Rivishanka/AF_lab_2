@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AF lab_2 - ex1</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    /*
+    Declare a variable named vehicleName in the window object (var) and assign value
+    ‘Toyota’ to it. This a global variable declaration.
+    */
+    var vehicleName = 'Toyota';
+
+    //Declare a function named printVehicleNameOuter to print out the vehicle name.
+    function printVehicleNameOuter() {
+        console.log(this.vehicleName);
+    }
+
+    //window object.
+    console.log(this);
+
+    //Call the function printVehicleNameOuter
+    printVehicleNameOuter();
+
+    /*
+    Declare an object named Vehicle (using object literal notation ‘{}’) which have a variable
+    called vehicleName and assigned the value ‘Nissan’ to it.
+
+    return anonymous function
+     */
+    var vehicle = {
+        vehicleName : 'Nissan',
+        printVehicleNameInner : function () {
+            return function () {
+                console.log(this.vehicleName)
+            }
+        }
+    };
+
+    /*
+    Call printVehicleNameInner function and assigned the return value to variable named
+    execute.
+     */
+    var execute = vehicle.printVehicleNameInner();
+
+    //Call the function execute.
+    execute();
+
+    /*
+    Call execute function by using call method. In call first argument is execution context
+    where function should be executed. Call method executes the function in the passed
+    execution context. Pass vehicle object as the first argument to call method.
+     */
+    execute.call(vehicle);
+
+    /*
+    assigning printVehicleNameInner return value to execute call bind method.
+    Bind method takes the execution context as the first argument and returns a new
+    function with passed execution context bound.
+     */
+    var executr1 = vehicle.printVehicleNameInner().bind(vehicle);
+    executr1();
+
+</script>
+</body>
+</html>

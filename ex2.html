@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AF lab_2 - ex2</title>
+</head>
+<body>
+
+<script>
+    /*
+    Create a function named taxCalculator which accepts the tax percentage as an
+    argument.
+    taxCalculator should return another function which accepts the amount as an argument
+    and returns calculated tax percentage (amount*taxPercentage/100).
+     */
+
+    function taxCalculator(tax) {
+        var taxPercentage = tax;
+
+        return function (amount) {
+            return amount*tax/100
+        }
+    }
+
+    //Call taxCalculator function and assigned the returned value to a variable.
+    var calculator = taxCalculator(10);
+
+    /*
+    Now, call that variable (it is a function now) with different amounts and get tax value
+    calculated.
+    */
+    console.log(calculator(90));
+</script>
+</body>
+</html>

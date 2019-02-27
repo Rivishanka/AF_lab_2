@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AF lab_2 - ex4</title>
+</head>
+<body>
+<script>
+
+    /*
+    Add property named type to the class (this.type). Assign a value to that variable using a
+    constructor argument.
+    Increase the number of VehicleCount (Vehicle.VehicleCount++) by one inside the
+    constructor.
+     */
+    function Vehicle(type) {
+        Vehicle.VehicleCount++;
+        this.type = type;
+    }
+    //Add VehicleCount (Vehicle.VehicleCount) as a static variable.
+    Vehicle.VehicleCount = 0;
+
+    /*
+    Add a function to its prototype named drive (Vehicle.prototype.print...). Print ‘Vehicle is
+    driving’ in the function body.
+     */
+    Vehicle.prototype.drive = function () {
+        console.log('Vehicle is driving');
+    };
+
+    /*
+    Create an object from Vehicle class (new Vehicle) and check static variable value, type
+    property value and function works.
+     */
+    var vehicle = new Vehicle('Toyota');
+
+    //Create a class named Car and extend the class Vehicle
+    function Car(type) {
+            Vehicle.call(this, type);
+
+    }
+
+    Car.prototype = Object.create(Vehicle.prototype);
+
+    Car.prototype.constructor = Car;
+
+    /*
+    Add a new method called balanceWheels to Car and print ‘Wheels are balanced’ in the
+    function body.
+     */
+    Car.prototype.balanceWheels = function () {
+        console.log('Wheel are balanced');
+    };
+    var car = new Car('Nissan');
+
+    //Call balanceWheels and drive methods using a car object and verify the functionality.
+    car.drive();
+    car.balanceWheels();
+    console.log(car.type, Vehicle.VehicleCount);
+
+</script>
+</body>
+</html>

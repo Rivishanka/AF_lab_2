@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AF lab_2 - ex6</title>
+</head>
+<body>
+<script>
+
+    //Use arrow functions.
+
+    function fetchUsers() {
+        return fetch('https://api.github.com/users')
+            .then(response => response.json());
+    }
+    fetchUsers().then(json => {
+        console.log(json);
+    });
+</script>
+</body>
+</html>
